@@ -1,17 +1,22 @@
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Wifi, Coffee, Bath, Users, Tv, Wind } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import RoomCard from '@/components/RoomCard';
 import Footer from '@/components/Footer';
+import RoomDetailModal from '@/components/RoomDetailModal';
+import { Button } from '@/components/ui/button';
 
 const RoomsPage = () => {
   // Room categories for filtering
   const categories = ['All', 'Standard', 'Deluxe', 'Suite', 'Presidential'];
   const [activeCategory, setActiveCategory] = useState('All');
   
-  // Room data
+  // State for room detail modal
+  const [selectedRoom, setSelectedRoom] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  // Room data with enhanced details
   const rooms = [
     {
       name: 'Standard Room',
@@ -21,7 +26,20 @@ const RoomsPage = () => {
       size: '300 sq ft',
       capacity: 2,
       amenities: ['Wifi', 'TV', 'AC', 'Safe'],
-      category: 'Standard'
+      category: 'Standard',
+      bedType: 'Queen Size Bed',
+      view: 'City View',
+      additionalFeatures: [
+        'Daily housekeeping',
+        'In-room safe',
+        'Complimentary bottled water',
+        'Wake-up service'
+      ],
+      additionalImages: [
+        { url: 'https://images.unsplash.com/photo-1511217079921-01a104e00c8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Standard Room Bathroom' },
+        { url: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Standard Room Workspace' }
+      ],
+      longDescription: 'Our Standard Room offers comfort and functionality at an excellent value. Perfect for the business traveler or tourists on the go, this well-appointed room features a plush queen-size bed, a work desk, and all the essentials you need for a comfortable stay. The modern bathroom includes a shower with premium toiletries. Enjoy views of the city while staying connected with high-speed WiFi and entertainment on your flat-screen TV.'
     },
     {
       name: 'Deluxe Room',
@@ -31,7 +49,20 @@ const RoomsPage = () => {
       size: '400 sq ft',
       capacity: 2,
       amenities: ['Wifi', 'Breakfast', 'Bathtub', 'Smart TV'],
-      category: 'Deluxe'
+      category: 'Deluxe',
+      bedType: 'King Size Bed',
+      view: 'City View',
+      additionalFeatures: [
+        'Premium Egyptian cotton linens',
+        'Complimentary welcome drink',
+        'Late checkout upon availability',
+        'Aromatherapy bath amenities'
+      ],
+      additionalImages: [
+        { url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Deluxe Room Bathroom' },
+        { url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Deluxe Room View' }
+      ],
+      longDescription: 'Our Deluxe Room offers a perfect blend of comfort and elegance. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay.'
     },
     {
       name: 'Premium Deluxe Room',
@@ -41,7 +72,20 @@ const RoomsPage = () => {
       size: '450 sq ft',
       capacity: 2,
       amenities: ['Wifi', 'Breakfast', 'Balcony', 'Minibar'],
-      category: 'Deluxe'
+      category: 'Deluxe',
+      bedType: 'King Size Bed',
+      view: 'City View',
+      additionalFeatures: [
+        'Premium Egyptian cotton linens',
+        'Complimentary welcome drink',
+        'Late checkout upon availability',
+        'Aromatherapy bath amenities'
+      ],
+      additionalImages: [
+        { url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Deluxe Room Bathroom' },
+        { url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Deluxe Room View' }
+      ],
+      longDescription: 'Our Premium Deluxe Room offers a luxurious blend of comfort and style. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay.'
     },
     {
       name: 'Junior Suite',
@@ -51,7 +95,20 @@ const RoomsPage = () => {
       size: '550 sq ft',
       capacity: 2,
       amenities: ['Wifi', 'Breakfast', 'Lounge Area', 'Bathtub'],
-      category: 'Suite'
+      category: 'Suite',
+      bedType: 'Queen Size Bed',
+      view: 'City View',
+      additionalFeatures: [
+        'Daily housekeeping',
+        'In-room safe',
+        'Complimentary bottled water',
+        'Wake-up service'
+      ],
+      additionalImages: [
+        { url: 'https://images.unsplash.com/photo-1511217079921-01a104e00c8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Junior Suite Bathroom' },
+        { url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Junior Suite View' }
+      ],
+      longDescription: 'Our Junior Suite offers a spacious and comfortable living space. The well-appointed bathroom includes a shower with premium toiletries. Enjoy views of the city while staying connected with high-speed WiFi and entertainment on your flat-screen TV.'
     },
     {
       name: 'Executive Suite',
@@ -61,7 +118,20 @@ const RoomsPage = () => {
       size: '650 sq ft',
       capacity: 2,
       amenities: ['Wifi', 'Breakfast', 'Bathtub', 'Minibar'],
-      category: 'Suite'
+      category: 'Suite',
+      bedType: 'King Size Bed',
+      view: 'City View',
+      additionalFeatures: [
+        'Premium Egyptian cotton linens',
+        'Complimentary welcome drink',
+        'Late checkout upon availability',
+        'Aromatherapy bath amenities'
+      ],
+      additionalImages: [
+        { url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Executive Suite Bathroom' },
+        { url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Executive Suite View' }
+      ],
+      longDescription: 'Our Executive Suite offers a luxurious blend of comfort and style. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay.'
     },
     {
       name: 'Family Suite',
@@ -71,7 +141,20 @@ const RoomsPage = () => {
       size: '850 sq ft',
       capacity: 4,
       amenities: ['Wifi', 'Breakfast', 'Bathtub', 'Kitchen'],
-      category: 'Suite'
+      category: 'Suite',
+      bedType: 'Queen Size Bed',
+      view: 'City View',
+      additionalFeatures: [
+        'Daily housekeeping',
+        'In-room safe',
+        'Complimentary bottled water',
+        'Wake-up service'
+      ],
+      additionalImages: [
+        { url: 'https://images.unsplash.com/photo-1511217079921-01a104e00c8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Family Suite Bathroom' },
+        { url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Family Suite View' }
+      ],
+      longDescription: 'Our Family Suite offers spacious accommodations for the whole family. The well-appointed bathroom includes a shower with premium toiletries. Enjoy views of the city while staying connected with high-speed WiFi and entertainment on your flat-screen TV.'
     },
     {
       name: 'Luxury Suite',
@@ -81,7 +164,20 @@ const RoomsPage = () => {
       size: '950 sq ft',
       capacity: 2,
       amenities: ['Wifi', 'Breakfast', 'Jacuzzi', 'Bar'],
-      category: 'Suite'
+      category: 'Suite',
+      bedType: 'King Size Bed',
+      view: 'City View',
+      additionalFeatures: [
+        'Premium Egyptian cotton linens',
+        'Complimentary welcome drink',
+        'Late checkout upon availability',
+        'Aromatherapy bath amenities'
+      ],
+      additionalImages: [
+        { url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Luxury Suite Bathroom' },
+        { url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Luxury Suite View' }
+      ],
+      longDescription: 'Our Luxury Suite offers a luxurious blend of comfort and style. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay.'
     },
     {
       name: 'Presidential Suite',
@@ -91,9 +187,28 @@ const RoomsPage = () => {
       size: '1200 sq ft',
       capacity: 4,
       amenities: ['Wifi', 'Breakfast', 'Private Terrace', 'Butler'],
-      category: 'Presidential'
+      category: 'Presidential',
+      bedType: 'King Size Bed',
+      view: 'City View',
+      additionalFeatures: [
+        'Premium Egyptian cotton linens',
+        'Complimentary welcome drink',
+        'Late checkout upon availability',
+        'Aromatherapy bath amenities'
+      ],
+      additionalImages: [
+        { url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Presidential Suite Bathroom' },
+        { url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Presidential Suite View' }
+      ],
+      longDescription: 'Our Presidential Suite offers unparalleled luxury, privacy, and personalized service. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay.'
     }
   ];
+  
+  // Open room detail modal
+  const openRoomDetail = (room: any) => {
+    setSelectedRoom(room);
+    setIsModalOpen(true);
+  };
   
   // Filter rooms based on active category
   const filteredRooms = activeCategory === 'All' 
@@ -158,13 +273,37 @@ const RoomsPage = () => {
           {/* Room Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredRooms.map((room, index) => (
-              <RoomCard 
-                key={room.name}
-                {...room}
-                delay={index % 3}
-              />
+              <div key={room.name}>
+                <RoomCard 
+                  {...room}
+                  delay={index % 3}
+                />
+                <div className="mt-3 flex justify-center">
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-primary text-primary hover:bg-primary hover:text-white transition-colors"
+                    onClick={() => openRoomDetail(room)}
+                  >
+                    View Details
+                  </Button>
+                </div>
+              </div>
             ))}
           </div>
+          
+          {/* Empty state for when no rooms match the filter */}
+          {filteredRooms.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-lg text-muted-foreground">No rooms found matching the selected category.</p>
+              <Button 
+                variant="outline" 
+                className="mt-4"
+                onClick={() => setActiveCategory('All')}
+              >
+                View All Rooms
+              </Button>
+            </div>
+          )}
         </div>
       </section>
       
@@ -370,6 +509,15 @@ const RoomsPage = () => {
           </motion.div>
         </div>
       </section>
+      
+      {/* Room Detail Modal */}
+      {selectedRoom && (
+        <RoomDetailModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          room={selectedRoom}
+        />
+      )}
       
       <Footer />
     </div>

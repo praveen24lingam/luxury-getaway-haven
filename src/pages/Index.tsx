@@ -1,5 +1,5 @@
-
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { Wifi, Utensils, Dumbbell, Car, Bath, Coffee } from 'lucide-react';
 import HeroSection from '@/components/Hero';
 import Navbar from '@/components/Navbar';
@@ -7,9 +7,15 @@ import RoomCard from '@/components/RoomCard';
 import AmenityCard from '@/components/AmenityCard';
 import BookingForm from '@/components/BookingForm';
 import Footer from '@/components/Footer';
+import RoomDetailModal from '@/components/RoomDetailModal';
+import { Button } from '@/components/ui/button';
 
 const Index = () => {
-  // Room data
+  // State for room detail modal
+  const [selectedRoom, setSelectedRoom] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  // Room data with enhanced details
   const rooms = [
     {
       name: 'Deluxe Room',
@@ -18,7 +24,20 @@ const Index = () => {
       imageUrl: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
       size: '400 sq ft',
       capacity: 2,
-      amenities: ['Wifi', 'Breakfast', 'Bathtub', 'Smart TV']
+      amenities: ['Wifi', 'Breakfast', 'Bathtub', 'Smart TV'],
+      bedType: 'King Size Bed',
+      view: 'City View',
+      additionalFeatures: [
+        'Premium Egyptian cotton linens',
+        'Complimentary welcome drink',
+        'Late checkout upon availability',
+        'Aromatherapy bath amenities'
+      ],
+      additionalImages: [
+        { url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Deluxe Room Bathroom' },
+        { url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Deluxe Room View' }
+      ],
+      longDescription: 'Our Deluxe Room offers a perfect blend of comfort and elegance. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay.'
     },
     {
       name: 'Executive Suite',
@@ -27,7 +46,21 @@ const Index = () => {
       imageUrl: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
       size: '650 sq ft',
       capacity: 2,
-      amenities: ['Wifi', 'Breakfast', 'Bathtub', 'Minibar']
+      amenities: ['Wifi', 'Breakfast', 'Bathtub', 'Minibar'],
+      bedType: 'Super King Size Bed',
+      view: 'Panoramic City View',
+      additionalFeatures: [
+        'Dedicated work area with desk',
+        'Espresso machine',
+        'Separate living room area',
+        'Evening turndown service',
+        'Complimentary pressing of two garments'
+      ],
+      additionalImages: [
+        { url: 'https://images.unsplash.com/photo-1568495248636-6432b97bd949?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Executive Suite Living Area' },
+        { url: 'https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1171&q=80', alt: 'Executive Suite Bathroom' }
+      ],
+      longDescription: 'The Executive Suite is designed for the discerning traveler who desires space and luxury. This expansive suite features a separate living area with premium furnishings, a super king-size bed, and a spacious marble bathroom with a deep soaking tub. Enjoy breathtaking panoramic city views, a fully stocked minibar, and an espresso machine for your morning coffee. The dedicated work area makes it ideal for business travelers, while the elegant design and upscale amenities ensure a memorable stay.'
     },
     {
       name: 'Family Suite',
@@ -36,9 +69,29 @@ const Index = () => {
       imageUrl: 'https://images.unsplash.com/photo-1591088398332-8a7791972843?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80',
       size: '850 sq ft',
       capacity: 4,
-      amenities: ['Wifi', 'Breakfast', 'Bathtub', 'Kitchen']
+      amenities: ['Wifi', 'Breakfast', 'Bathtub', 'Kitchen'],
+      bedType: '1 King Bed & 2 Single Beds',
+      view: 'Garden View',
+      additionalFeatures: [
+        'Child-friendly amenities and toys',
+        'Kitchenette with microwave',
+        'PlayStation or Xbox on request',
+        'Family movie library',
+        'Children's welcome pack'
+      ],
+      additionalImages: [
+        { url: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80', alt: 'Family Suite Second Room' },
+        { url: 'https://images.unsplash.com/photo-1584132905271-512c958d674a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80', alt: 'Family Suite Kitchen' }
+      ],
+      longDescription: 'Our Family Suite is the perfect choice for families seeking comfort and convenience. The thoughtfully designed space includes a master bedroom with a king-size bed and a separate room with two single beds, ensuring everyone has their own space. The suite features a kitchenette equipped with a microwave and essential cookware, making it easy to prepare simple meals. Children will be delighted with age-appropriate welcome packs and the option to request gaming consoles. The suite overlooks our beautiful garden, providing a peaceful environment for your family vacation.'
     }
   ];
+
+  // Open room detail modal
+  const openRoomDetail = (room: any) => {
+    setSelectedRoom(room);
+    setIsModalOpen(true);
+  };
 
   // Amenity data
   const amenities = [
@@ -181,11 +234,21 @@ const Index = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             {rooms.map((room, index) => (
-              <RoomCard 
-                key={room.name}
-                {...room}
-                delay={index}
-              />
+              <div key={room.name}>
+                <RoomCard 
+                  {...room}
+                  delay={index}
+                />
+                <div className="mt-3 flex justify-center">
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-primary text-primary hover:bg-primary hover:text-white transition-colors"
+                    onClick={() => openRoomDetail(room)}
+                  >
+                    View Details
+                  </Button>
+                </div>
+              </div>
             ))}
           </div>
           
@@ -399,6 +462,14 @@ const Index = () => {
           </div>
         </div>
       </section>
+      
+      {selectedRoom && (
+        <RoomDetailModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          room={selectedRoom}
+        />
+      )}
       
       <Footer />
     </div>

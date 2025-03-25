@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Wifi, Utensils, Dumbbell, Car, Bath, Coffee } from 'lucide-react';
@@ -299,7 +298,7 @@ const Index = () => {
       </section>
       
       {/* Booking Section */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-20 overflow-hidden" data-section="booking">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 

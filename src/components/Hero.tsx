@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -30,6 +32,14 @@ const HeroSection = () => {
     
     return () => clearInterval(intervalId);
   }, [heroImages.length]);
+  
+  // Function to scroll to booking section
+  const scrollToBooking = () => {
+    const bookingSection = document.querySelector('[data-section="booking"]');
+    if (bookingSection) {
+      bookingSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   
   return (
     <div className="relative w-full h-screen overflow-hidden">
@@ -68,17 +78,38 @@ const HeroSection = () => {
             where every detail is crafted for your perfect escape.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <Button 
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-sm"
-            >
-              Book Your Stay
-            </Button>
-            <Button 
-              variant="outline" 
-              className="bg-transparent border-white text-white hover:bg-white/10 px-8 py-6 text-lg rounded-sm"
-            >
-              Explore Rooms
-            </Button>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button 
+                    className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-sm"
+                    onClick={scrollToBooking}
+                  >
+                    Book Your Stay
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Check availability and book now</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button 
+                    variant="outline" 
+                    className="bg-transparent border-white text-white hover:bg-white/10 px-8 py-6 text-lg rounded-sm"
+                    asChild
+                  >
+                    <Link to="/rooms">Explore Rooms</Link>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>View our luxury accommodations</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </div>
         </motion.div>
       </div>

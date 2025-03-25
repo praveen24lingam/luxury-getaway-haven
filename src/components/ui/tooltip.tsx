@@ -4,15 +4,33 @@ import * as TooltipPrimitive from "@radix-ui/react-tooltip"
 
 import { cn } from "@/lib/utils"
 
-// TooltipProvider doesn't need forwardRef since it doesn't accept a ref
-const TooltipProvider = ({ ...props }) => (
-  <TooltipPrimitive.Provider {...props} />
+// TooltipProvider needs to be a proper React component that includes children
+const TooltipProvider = ({
+  children,
+  ...props
+}: TooltipPrimitive.TooltipProviderProps) => (
+  <TooltipPrimitive.Provider {...props}>{children}</TooltipPrimitive.Provider>
 )
 TooltipProvider.displayName = TooltipPrimitive.Provider.displayName
 
-const Tooltip = TooltipPrimitive.Root
+// Define Tooltip as a proper React component rather than just an alias
+const Tooltip = ({ children, ...props }: TooltipPrimitive.TooltipProps) => (
+  <TooltipPrimitive.Root {...props}>{children}</TooltipPrimitive.Root>
+)
+Tooltip.displayName = TooltipPrimitive.Root.displayName
 
-const TooltipTrigger = TooltipPrimitive.Trigger
+// Define TooltipTrigger as a proper forwarded ref component
+const TooltipTrigger = React.forwardRef<
+  React.ElementRef<typeof TooltipPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Trigger>
+>(({ className, ...props }, ref) => (
+  <TooltipPrimitive.Trigger
+    ref={ref}
+    className={cn(className)}
+    {...props}
+  />
+))
+TooltipTrigger.displayName = TooltipPrimitive.Trigger.displayName
 
 const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,

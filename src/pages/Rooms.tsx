@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Wifi, Coffee, Bath, Users, Tv, Wind } from 'lucide-react';
@@ -39,7 +40,7 @@ const RoomsPage = () => {
         { url: 'https://images.unsplash.com/photo-1511217079921-01a104e00c8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Standard Room Bathroom' },
         { url: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Standard Room Workspace' }
       ],
-      longDescription: 'Our Standard Room offers comfort and functionality at an excellent value. Perfect for the business traveler or tourists on the go, this well-appointed room features a plush queen-size bed, a work desk, and all the essentials you need for a comfortable stay. The modern bathroom includes a shower with premium toiletries. Enjoy views of the city while staying connected with high-speed WiFi and entertainment on your flat-screen TV.'
+      longDescription: "Our Standard Room offers comfort and functionality at an excellent value. Perfect for the business traveler or tourists on the go, this well-appointed room features a plush queen-size bed, a work desk, and all the essentials you need for a comfortable stay. The modern bathroom includes a shower with premium toiletries. Enjoy views of the city while staying connected with high-speed WiFi and entertainment on your flat-screen TV."
     },
     {
       name: 'Deluxe Room',
@@ -62,7 +63,7 @@ const RoomsPage = () => {
         { url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Deluxe Room Bathroom' },
         { url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Deluxe Room View' }
       ],
-      longDescription: 'Our Deluxe Room offers a perfect blend of comfort and elegance. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay.'
+      longDescription: "Our Deluxe Room offers a perfect blend of comfort and elegance. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay."
     },
     {
       name: 'Premium Deluxe Room',
@@ -85,7 +86,7 @@ const RoomsPage = () => {
         { url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Deluxe Room Bathroom' },
         { url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Deluxe Room View' }
       ],
-      longDescription: 'Our Premium Deluxe Room offers a luxurious blend of comfort and style. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay.'
+      longDescription: "Our Premium Deluxe Room offers a luxurious blend of comfort and style. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay."
     },
     {
       name: 'Junior Suite',
@@ -108,7 +109,7 @@ const RoomsPage = () => {
         { url: 'https://images.unsplash.com/photo-1511217079921-01a104e00c8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Junior Suite Bathroom' },
         { url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Junior Suite View' }
       ],
-      longDescription: 'Our Junior Suite offers a spacious and comfortable living space. The well-appointed bathroom includes a shower with premium toiletries. Enjoy views of the city while staying connected with high-speed WiFi and entertainment on your flat-screen TV.'
+      longDescription: "Our Junior Suite offers a spacious and comfortable living space. The well-appointed bathroom includes a shower with premium toiletries. Enjoy views of the city while staying connected with high-speed WiFi and entertainment on your flat-screen TV."
     },
     {
       name: 'Executive Suite',
@@ -131,7 +132,7 @@ const RoomsPage = () => {
         { url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Executive Suite Bathroom' },
         { url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Executive Suite View' }
       ],
-      longDescription: 'Our Executive Suite offers a luxurious blend of comfort and style. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay.'
+      longDescription: "Our Executive Suite offers a luxurious blend of comfort and style. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay."
     },
     {
       name: 'Family Suite',
@@ -154,7 +155,7 @@ const RoomsPage = () => {
         { url: 'https://images.unsplash.com/photo-1511217079921-01a104e00c8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Family Suite Bathroom' },
         { url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Family Suite View' }
       ],
-      longDescription: 'Our Family Suite offers spacious accommodations for the whole family. The well-appointed bathroom includes a shower with premium toiletries. Enjoy views of the city while staying connected with high-speed WiFi and entertainment on your flat-screen TV.'
+      longDescription: "Our Family Suite offers spacious accommodations for the whole family. The well-appointed bathroom includes a shower with premium toiletries. Enjoy views of the city while staying connected with high-speed WiFi and entertainment on your flat-screen TV."
     },
     {
       name: 'Luxury Suite',
@@ -177,7 +178,7 @@ const RoomsPage = () => {
         { url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Luxury Suite Bathroom' },
         { url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Luxury Suite View' }
       ],
-      longDescription: 'Our Luxury Suite offers a luxurious blend of comfort and style. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay.'
+      longDescription: "Our Luxury Suite offers a luxurious blend of comfort and style. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay."
     },
     {
       name: 'Presidential Suite',
@@ -200,7 +201,7 @@ const RoomsPage = () => {
         { url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Presidential Suite Bathroom' },
         { url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Presidential Suite View' }
       ],
-      longDescription: 'Our Presidential Suite offers unparalleled luxury, privacy, and personalized service. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay.'
+      longDescription: "Our Presidential Suite offers unparalleled luxury, privacy, and personalized service. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay."
     }
   ];
   

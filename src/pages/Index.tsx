@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Wifi, Utensils, Dumbbell, Car, Bath, Coffee } from 'lucide-react';
@@ -37,7 +38,7 @@ const Index = () => {
         { url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Deluxe Room Bathroom' },
         { url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Deluxe Room View' }
       ],
-      longDescription: 'Our Deluxe Room offers a perfect blend of comfort and elegance. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay.'
+      longDescription: "Our Deluxe Room offers a perfect blend of comfort and elegance. The spacious layout features a plush king-size bed with premium Egyptian cotton linens, ensuring a restful night's sleep. The modern bathroom includes a luxurious bathtub and premium bath amenities. Enjoy city views from your window, catch up on your favorite shows on the Smart TV, or stay connected with high-speed WiFi. A daily gourmet breakfast is included with your stay."
     },
     {
       name: 'Executive Suite',
@@ -60,7 +61,7 @@ const Index = () => {
         { url: 'https://images.unsplash.com/photo-1568495248636-6432b97bd949?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80', alt: 'Executive Suite Living Area' },
         { url: 'https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1171&q=80', alt: 'Executive Suite Bathroom' }
       ],
-      longDescription: 'The Executive Suite is designed for the discerning traveler who desires space and luxury. This expansive suite features a separate living area with premium furnishings, a super king-size bed, and a spacious marble bathroom with a deep soaking tub. Enjoy breathtaking panoramic city views, a fully stocked minibar, and an espresso machine for your morning coffee. The dedicated work area makes it ideal for business travelers, while the elegant design and upscale amenities ensure a memorable stay.'
+      longDescription: "The Executive Suite is designed for the discerning traveler who desires space and luxury. This expansive suite features a separate living area with premium furnishings, a super king-size bed, and a spacious marble bathroom with a deep soaking tub. Enjoy breathtaking panoramic city views, a fully stocked minibar, and an espresso machine for your morning coffee. The dedicated work area makes it ideal for business travelers, while the elegant design and upscale amenities ensure a memorable stay."
     },
     {
       name: 'Family Suite',
@@ -77,13 +78,13 @@ const Index = () => {
         'Kitchenette with microwave',
         'PlayStation or Xbox on request',
         'Family movie library',
-        'Children's welcome pack'
+        "Children's welcome pack"
       ],
       additionalImages: [
         { url: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80', alt: 'Family Suite Second Room' },
         { url: 'https://images.unsplash.com/photo-1584132905271-512c958d674a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80', alt: 'Family Suite Kitchen' }
       ],
-      longDescription: 'Our Family Suite is the perfect choice for families seeking comfort and convenience. The thoughtfully designed space includes a master bedroom with a king-size bed and a separate room with two single beds, ensuring everyone has their own space. The suite features a kitchenette equipped with a microwave and essential cookware, making it easy to prepare simple meals. Children will be delighted with age-appropriate welcome packs and the option to request gaming consoles. The suite overlooks our beautiful garden, providing a peaceful environment for your family vacation.'
+      longDescription: "Our Family Suite is the perfect choice for families seeking comfort and convenience. The thoughtfully designed space includes a master bedroom with a king-size bed and a separate room with two single beds, ensuring everyone has their own space. The suite features a kitchenette equipped with a microwave and essential cookware, making it easy to prepare simple meals. Children will be delighted with age-appropriate welcome packs and the option to request gaming consoles. The suite overlooks our beautiful garden, providing a peaceful environment for your family vacation."
     }
   ];
 
